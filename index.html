@@ -96,5 +96,17 @@
   <script>
     (()=>{const track=document.getElementById('track'),count=document.getElementById('count'),bar=document.getElementById('bar'),hero=document.getElementById('heroPhoto');let index=0,drag=false,startX=0,startScroll=0,moved=false;function esc(s){return String(s||'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}function slides(){return [...track.querySelectorAll('.slide')]}function sizeTail(){const first=slides()[0];track.style.setProperty('--tail',first?Math.max(0,track.clientWidth-first.getBoundingClientRect().width-20)+'px':'0px')}function unit(){const all=slides();return all[1]?all[1].offsetLeft-all[0].offsetLeft:(all[0]?.getBoundingClientRect().width||1)}function update(){const all=slides();if(!all.length)return;index=Math.max(0,Math.min(all.length-1,Math.round(track.scrollLeft/unit())));count.textContent=String(index+1).padStart(2,'0')+' / '+String(all.length).padStart(2,'0');bar.style.width=(100/all.length)+'%';bar.style.transform='translateX('+(index*100)+'%)'}function go(n){const all=slides();if(!all.length)return;index=(n+all.length)%all.length;track.scrollTo({left:all[index].offsetLeft-all[0].offsetLeft,behavior:'smooth'})}function render(items){track.innerHTML='';if(!items.length){track.innerHTML='<p class="empty">还没有作品图片，请到 /admin 后台添加。</p>';count.textContent='00 / 00';return}hero.src=items[0].image;items.forEach((item,i)=>{const article=document.createElement('article');article.className='slide';article.setAttribute('aria-label','空间灵感 '+(i+1)+'：'+(item.title||''));article.innerHTML='<div class="photo-wrap"><img src="'+esc(item.image)+'" alt="'+esc(item.title||'简帘软装作品图片')+'" draggable="false" loading="'+(i===0?'eager':'lazy')+'"></div><div class="slide-caption"><span>'+String(i+1).padStart(2,'0')+' / '+String(items.length).padStart(2,'0')+'</span><h3>'+esc(item.title||'简帘软装作品')+'</h3></div>';track.appendChild(article)});sizeTail();update()}fetch('/data/gallery.json',{cache:'no-store'}).then(r=>r.json()).then(data=>render(data.items||[])).catch(()=>{track.innerHTML='<p class="empty">图片数据暂时没有加载出来。</p>'});window.addEventListener('resize',sizeTail);document.getElementById('prev').onclick=()=>go(index-1);document.getElementById('next').onclick=()=>go(index+1);track.addEventListener('scroll',update,{passive:true});track.addEventListener('keydown',e=>{if(e.key==='ArrowRight'||e.key==='ArrowLeft'){e.preventDefault();go(index+(e.key==='ArrowRight'?1:-1))}});track.addEventListener('pointerdown',e=>{if(e.pointerType==='touch')return;drag=true;moved=false;startX=e.clientX;startScroll=track.scrollLeft;track.classList.add('dragging');track.setPointerCapture(e.pointerId)});track.addEventListener('pointermove',e=>{if(!drag)return;const dx=e.clientX-startX;if(Math.abs(dx)>3)moved=true;track.scrollLeft=startScroll-dx});function end(){if(!drag)return;drag=false;track.classList.remove('dragging');if(moved)requestAnimationFrame(()=>go(Math.round(track.scrollLeft/unit())))}track.addEventListener('pointerup',end);track.addEventListener('pointercancel',end)})();
   </script>
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+<script>
+  if (window.netlifyIdentity) {
+    window.netlifyIdentity.on('init', user => {
+      if (!user) {
+        window.netlifyIdentity.on('login', () => {
+          window.location.assign('/admin/');
+        });
+      }
+    });
+  }
+</script>
 </body>
 </html>
