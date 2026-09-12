@@ -1,0 +1,28 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "images/uploads"
+public_folder: "/images/uploads"
+
+locale: "zh_Hans"
+
+collections:
+  - name: "gallery"
+    label: "作品图片"
+    files:
+      - name: "gallery"
+        label: "幻灯片图片"
+        file: "data/gallery.json"
+        fields:
+          - label: "图片列表"
+            name: "items"
+            widget: "list"
+            summary: "{{fields.title}}"
+            fields:
+              - label: "标题"
+                name: "title"
+                widget: "string"
+              - label: "图片"
+                name: "image"
+                widget: "image"

@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f4f0e9">
+  <title>简帘软装｜让光成为家的设计</title>
+  <meta name="description" content="简帘软装，成都窗帘与软装空间灵感。">
+  <style>
+    :root{--cream:#f4f0e9;--ink:#302d27;--muted:#777165;--line:#d7d0c5;--olive:#777558;--deep:#353b32}
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:var(--cream);color:var(--ink);font-family:"Noto Sans CJK SC","Microsoft YaHei",system-ui,sans-serif}
+    button,a{-webkit-tap-highlight-color:transparent}
+    button{font:inherit}
+    a{color:inherit;text-decoration:none}
+    .shell{max-width:1500px;margin:auto;padding:0 clamp(22px,5vw,82px)}
+    header{height:92px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line)}
+    .brand{display:flex;align-items:center;gap:13px}
+    .brand img{width:88px;height:59px;object-fit:contain}
+    .brand span{font-size:11px;letter-spacing:.19em;color:var(--muted);border-left:1px solid var(--line);padding-left:15px}
+    nav{display:flex;gap:35px;font-size:13px;letter-spacing:.13em}
+    nav a:hover,.text-link:hover{color:var(--olive)}
+    .hero{display:grid;grid-template-columns:minmax(320px,.88fr) minmax(400px,1.12fr);min-height:min(710px,75vw);padding-top:34px;gap:clamp(25px,5vw,76px)}
+    .hero-copy{display:flex;flex-direction:column;justify-content:center;padding:4rem 0 5rem}
+    .eyebrow{font-size:12px;letter-spacing:.28em;color:var(--olive);font-weight:600}
+    h1{font-family:"Songti SC","Noto Serif CJK SC",serif;font-weight:400;font-size:clamp(48px,5.8vw,88px);letter-spacing:.08em;line-height:1.28;margin:38px 0 26px}
+    .hero p{font-size:16px;line-height:2.1;color:#645f55;max-width:27em}
+    .text-link{align-self:flex-start;margin-top:40px;border-bottom:1px solid currentColor;padding:0 0 10px;font-size:14px;letter-spacing:.13em;transition:color .2s}
+    .text-link span{margin-left:20px}
+    .hero-image{position:relative;overflow:hidden;background:#d7cfc1;height:100%;min-height:610px}
+    .hero-image img{width:100%;height:100%;object-fit:cover;object-position:center 58%;display:block}
+    .vertical{position:absolute;right:22px;bottom:22px;color:white;writing-mode:vertical-rl;font-size:11px;letter-spacing:.25em;text-shadow:0 1px 5px #333}
+    .intro{display:grid;grid-template-columns:1fr 1.2fr;gap:8vw;padding-top:145px;padding-bottom:145px;border-bottom:1px solid var(--line)}
+    .section-no{font-size:12px;letter-spacing:.2em;color:var(--olive)}
+    h2{font-family:"Songti SC","Noto Serif CJK SC",serif;font-size:clamp(32px,3.3vw,48px);font-weight:400;line-height:1.5;letter-spacing:.07em;margin:22px 0}
+    .intro p{font-size:16px;color:#625d54;line-height:2.2;max-width:600px;margin:0}
+    .intro .note{display:flex;gap:25px;margin-top:42px;color:var(--olive);font-size:13px;letter-spacing:.1em}
+    .gallery{padding-top:105px;padding-bottom:120px}
+    .gallery-top{display:flex;justify-content:space-between;align-items:end;gap:22px;margin-bottom:42px}
+    .gallery-top h2{margin-bottom:0}
+    .gallery-top p{font-size:14px;color:var(--muted);margin:0 0 6px}
+    .controls{display:flex;gap:9px}
+    .arrow{background:transparent;border:1px solid #b9b0a2;border-radius:50%;width:48px;height:48px;cursor:pointer;font-size:22px;transition:background .2s,color .2s}
+    .arrow:hover,.arrow:focus-visible{background:var(--deep);color:white}
+    .track{display:flex;gap:20px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;scrollbar-width:none;cursor:grab;touch-action:pan-x pan-y;padding-bottom:8px}
+    .track::-webkit-scrollbar{display:none}
+    .track.dragging{cursor:grabbing;scroll-behavior:auto;scroll-snap-type:none}
+    .track::after{content:"";flex:0 0 var(--tail,0px)}
+    .slide{scroll-snap-align:start;flex:0 0 clamp(260px,32%,430px);min-width:0;user-select:none}
+    .photo-wrap{height:clamp(365px,43vw,550px);overflow:hidden;background:#ded8cc}
+    .photo-wrap img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .6s}
+    .slide:hover img{transform:scale(1.035)}
+    .slide-caption{display:flex;align-items:baseline;gap:22px;border-bottom:1px solid var(--line);padding:18px 0}
+    .slide-caption span{color:var(--olive);font-size:12px;white-space:nowrap}
+    .slide-caption h3{font-size:17px;font-weight:400;letter-spacing:.08em;margin:0}
+    .gallery-bottom{display:flex;justify-content:space-between;align-items:center;margin-top:35px;color:var(--muted);font-size:13px}
+    .progress{height:1px;background:var(--line);width:180px}
+    .progress i{display:block;background:var(--ink);height:2px;width:16.66%;transition:transform .3s}
+    .empty{color:var(--muted);line-height:2;padding:40px 0}
+    footer{background:var(--deep);color:#f0ede6;padding:80px 0 35px}
+    .foot-grid{display:flex;justify-content:space-between;gap:40px;align-items:end}
+    .foot-grid h2{margin:0 0 30px}
+    .foot-grid p{font-size:15px;line-height:2;color:#d2d2c8}
+    .foot-grid a{font-size:13px;border-bottom:1px solid #aaa;padding-bottom:8px}
+    .contact-links{display:flex;flex-wrap:wrap;gap:12px;margin-top:22px}
+    .foot-grid .contact-links a{display:inline-flex;align-items:center;min-height:48px;padding:12px 18px;border:1px solid #a4aa9e;border-radius:4px;font-size:16px;letter-spacing:.04em}
+    .contact-links a:hover{background:#515a4b}
+    .copyright{border-top:1px solid #6b7169;margin-top:90px;padding-top:24px;font-size:12px;color:#b7bcb4;display:flex;justify-content:space-between}
+    @media(max-width:800px){header{height:76px}.brand img{width:72px;height:48px}.brand span{display:none}nav{gap:18px;font-size:12px}.hero{display:flex;flex-direction:column;gap:0;padding-top:0}.hero-copy{padding:65px 0 56px}h1{margin:26px 0 16px}.hero-image{min-height:0;height:60vh;max-height:690px}.intro{grid-template-columns:1fr;padding-top:90px;padding-bottom:90px;gap:8px}.gallery{padding-top:80px;padding-bottom:90px}.gallery-top{align-items:start}.gallery-top p{display:none}.slide{flex-basis:77%}.photo-wrap{height:min(105vw,520px)}.foot-grid{display:block}.copyright{margin-top:70px}.progress{width:110px}}
+    @media(max-width:460px){.shell{padding-left:20px;padding-right:20px}h1{font-size:clamp(35px,10.5vw,48px)}nav{gap:12px}.hero-image{height:125vw;max-height:520px}.gallery-top h2{font-size:32px}.controls{margin-top:30px}.arrow{min-width:44px;min-height:44px}.slide{flex-basis:85%}.gallery-bottom span:last-child{display:none}.contact-links{flex-direction:column;align-items:flex-start}.copyright{padding-bottom:env(safe-area-inset-bottom)}}
+    @media(prefers-reduced-motion:reduce){html,.track{scroll-behavior:auto}.photo-wrap img{transition:none}}
+  </style>
+</head>
+<body>
+  <header class="shell">
+    <a href="#top" class="brand" aria-label="简帘软装，返回顶部"><img src="/images/logo.png" alt="简帘软装 Logo"><span>JI AN LIAN · SOFT FURNISHINGS</span></a>
+    <nav aria-label="网站导航"><a href="#about">关于我们</a><a href="#gallery">空间灵感</a><a href="#visit">联系到店</a></nav>
+  </header>
+  <main id="top">
+    <section class="hero shell">
+      <div class="hero-copy"><span class="eyebrow">JI AN LIAN · CHENGDU</span><h1>让光，<br>成为家的设计。</h1><p>一扇窗，决定一室的光。简帘软装以窗帘与软装搭配，陪你找到空间里舒适、从容的日常。</p><a class="text-link" href="#gallery">探索空间灵感 <span aria-hidden="true">↗</span></a></div>
+      <div class="hero-image"><img id="heroPhoto" src="/images/uploads/01.jpg" alt="自然光照入客厅，浅色窗帘与中古风家具相映"><span class="vertical">THE ART OF LIVING WITH LIGHT</span></div>
+    </section>
+    <section class="intro shell" id="about">
+      <div><span class="section-no">01 / ABOUT</span><h2>让每一种生活，<br>都有自己的温度。</h2></div>
+      <div><p>窗帘不只是遮挡与装饰，也是光线、材质和家的气息之间的一道连接。我们关注布料的垂坠、色彩的呼应，以及空间里每个恰到好处的细节，为不同的居住方式寻找合适的软装表达。</p><div class="note"><span>窗帘搭配</span><span>空间软装</span><span>生活灵感</span></div></div>
+    </section>
+    <section class="gallery shell" id="gallery">
+      <div class="gallery-top"><div><span class="section-no">02 / INSPIRATION</span><h2>中古风 · 空间灵感</h2><p>柔和的织物、温润的木色，与自然光一起构成家的表情。</p></div><div class="controls"><button class="arrow" id="prev" type="button" aria-label="上一张">‹</button><button class="arrow" id="next" type="button" aria-label="下一张">›</button></div></div>
+      <div class="track" id="track" tabindex="0" aria-label="中古风素材画廊，可左右滑动"></div>
+      <div class="gallery-bottom"><span id="count" aria-live="polite">01 / 06</span><div class="progress" aria-hidden="true"><i id="bar"></i></div><span>左右拖动，发现更多灵感</span></div>
+    </section>
+  </main>
+  <footer id="visit"><div class="shell"><div class="foot-grid"><div><span class="section-no" style="color:#bcbba2">03 / VISIT US</span><h2>来店里，聊聊你的家。</h2><p>简帘软装<br>四川省成都市武侯区七里路108号</p><div class="contact-links" aria-label="联系电话"><a href="tel:17711328500" aria-label="拨打 17711328500">17711328500 ↗</a><a href="tel:18111256888" aria-label="拨打 18111256888">18111256888 ↗</a></div></div><a href="#top">返回顶部 ↑</a></div><div class="copyright"><span>© 简帘软装</span><span>CHENGDU · CHINA</span></div></div></footer>
+  <script>
+    (()=>{const track=document.getElementById('track'),count=document.getElementById('count'),bar=document.getElementById('bar'),hero=document.getElementById('heroPhoto');let index=0,drag=false,startX=0,startScroll=0,moved=false;function esc(s){return String(s||'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}function slides(){return [...track.querySelectorAll('.slide')]}function sizeTail(){const first=slides()[0];track.style.setProperty('--tail',first?Math.max(0,track.clientWidth-first.getBoundingClientRect().width-20)+'px':'0px')}function unit(){const all=slides();return all[1]?all[1].offsetLeft-all[0].offsetLeft:(all[0]?.getBoundingClientRect().width||1)}function update(){const all=slides();if(!all.length)return;index=Math.max(0,Math.min(all.length-1,Math.round(track.scrollLeft/unit())));count.textContent=String(index+1).padStart(2,'0')+' / '+String(all.length).padStart(2,'0');bar.style.width=(100/all.length)+'%';bar.style.transform='translateX('+(index*100)+'%)'}function go(n){const all=slides();if(!all.length)return;index=(n+all.length)%all.length;track.scrollTo({left:all[index].offsetLeft-all[0].offsetLeft,behavior:'smooth'})}function render(items){track.innerHTML='';if(!items.length){track.innerHTML='<p class="empty">还没有作品图片，请到 /admin 后台添加。</p>';count.textContent='00 / 00';return}hero.src=items[0].image;items.forEach((item,i)=>{const article=document.createElement('article');article.className='slide';article.setAttribute('aria-label','空间灵感 '+(i+1)+'：'+(item.title||''));article.innerHTML='<div class="photo-wrap"><img src="'+esc(item.image)+'" alt="'+esc(item.title||'简帘软装作品图片')+'" draggable="false" loading="'+(i===0?'eager':'lazy')+'"></div><div class="slide-caption"><span>'+String(i+1).padStart(2,'0')+' / '+String(items.length).padStart(2,'0')+'</span><h3>'+esc(item.title||'简帘软装作品')+'</h3></div>';track.appendChild(article)});sizeTail();update()}fetch('/data/gallery.json',{cache:'no-store'}).then(r=>r.json()).then(data=>render(data.items||[])).catch(()=>{track.innerHTML='<p class="empty">图片数据暂时没有加载出来。</p>'});window.addEventListener('resize',sizeTail);document.getElementById('prev').onclick=()=>go(index-1);document.getElementById('next').onclick=()=>go(index+1);track.addEventListener('scroll',update,{passive:true});track.addEventListener('keydown',e=>{if(e.key==='ArrowRight'||e.key==='ArrowLeft'){e.preventDefault();go(index+(e.key==='ArrowRight'?1:-1))}});track.addEventListener('pointerdown',e=>{if(e.pointerType==='touch')return;drag=true;moved=false;startX=e.clientX;startScroll=track.scrollLeft;track.classList.add('dragging');track.setPointerCapture(e.pointerId)});track.addEventListener('pointermove',e=>{if(!drag)return;const dx=e.clientX-startX;if(Math.abs(dx)>3)moved=true;track.scrollLeft=startScroll-dx});function end(){if(!drag)return;drag=false;track.classList.remove('dragging');if(moved)requestAnimationFrame(()=>go(Math.round(track.scrollLeft/unit())))}track.addEventListener('pointerup',end);track.addEventListener('pointercancel',end)})();
+  </script>
+</body>
+</html>
